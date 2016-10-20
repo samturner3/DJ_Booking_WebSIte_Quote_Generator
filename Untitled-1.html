@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+</head>
+<script>
+$( document ).ready(function() {
+
+	// Get the checkAvilForm.
+	var checkAvilForm = $('#checkAvilForm');
+/////checkAvilForm - DATE YEAR SETUP /////////////////////////////////////
+
+			var d = new Date(); 
+			var d0 = (d.getFullYear() ); 
+			var d1 = (d.getFullYear() + 1 ); 
+			//var d2 = (d.getFullYear() + 2 ); 
+			
+			document.getElementById("d0").innerHTML = d0; 
+			document.getElementById("d1").innerHTML = d1; 
+			
+			// checkAvilForm - reset VALAIDATION /////////////////////////////////////
+			$( "#Day, #Month, #Year" ).change(function() {
+				//window.alert("Changed");
+			 $("#dayDiv, #dayError1, #monthDiv, #monthError1, #yearDiv, #yearError1").removeClass("has-error has-feedback");
+			 $("#dayError2, #monthError2, #yearError2").hide();
+			});
+			
+// checkAvilForm - DATE VALAIDATION /////////////////////////////////////
+	
+	$("#checkAvilForm").submit(function(event) {
+	//window.alert("sometext");
+	event.stopImmediatePropagation();
+	event.preventDefault();
+	
+	// Stop the browser from submitting the checkAvilForm.
+		
+	
+			if(($("#Day").val() === '-43')){
+				
+				$("#dayDiv").addClass( "has-error has-feedback" );
+				
+				$("#dayError2").slideDown();
+				
+			}
+			
+			else if($("#Month").val() === '-43'){
+				
+				$("#monthDiv").addClass( "has-error has-feedback" );
+				
+				$("#monthError2").slideDown();
+			}
+			
+			else if($("#Year").val() === '-43'){
+				
+				$("#yearDiv").addClass( "has-error has-feedback" );
+				
+				$("#yearError2").slideDown();
+			}
+	
+			else {
+				document.getElementById("checkAvilForm").submit();
+	
+
+
+});
+</script>
+
+<h5 style="text-align: center;">GET AN INSTANT QUOTE AND AVAILABILITY FOR YOUR DATE</h5>
+<!-- BEGIN DJEVENTPLANNER CODE -->
+
+<form method="post" id="checkAvilForm" class="form-inline" action="http://www.discobuzz.com.au/QuoteGen/checkAvilProcess.php" >
+
+<div id ="dayDiv" class="form-group">
+<select name="day">
+<option value="-43">Day</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<span id="dayError1"></span>
+</div>
+
+<div id ="monthDiv" class="form-group">
+<select name="month">
+<option value="-43">Month</option>
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<span id="monthError1"></span>
+</div>
+
+<div id ="yearDiv" class="form-group">
+<select name="year">
+<option value="-43">Year</option>
+<option id="d0" selected="selected"></option>
+<option id="d1"></option>
+</select>
+<span id="yearError1"></span>
+</div>
+
+<input name="djidnumber" type="hidden" value="6121" />
+<input size="normal" type="submit" value="Check Now" />
+</form>
+
+<body>
+</body>
+</html>

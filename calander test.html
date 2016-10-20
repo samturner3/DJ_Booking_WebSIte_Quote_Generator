@@ -1,0 +1,142 @@
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css" />
+
+<body>
+
+
+      
+        <div id ="dayDiv" class="form-group">
+       
+       
+            <label class="sr-only" for="Day">Day</label>
+            <select class="form-control" name="day" id="Day" placeholder="Day">
+              <option value=-43>Day </option>
+              <option value=01>1</option>
+              <option value=02>2</option>
+              <option value=03>3</option>
+              <option value=04>4</option>
+              <option value=05>5</option>
+              <option value=06>6</option>
+              <option value=07>7</option>
+              <option value=08>8</option>
+              <option value=09>9</option>
+              <option value=10>10</option>
+              <option value=11>11</option>
+              <option value=12>12</option>
+              <option value=13>13</option>
+              <option value=14>14</option>
+              <option value=15>15</option>
+              <option value=16>16</option>
+              <option value=17>17</option>
+              <option value=18>18</option>
+              <option value=19>19</option>
+              <option value=20>20</option>
+              <option value=21>21</option>
+              <option value=22>22</option>
+              <option value=23>23</option>
+              <option value=24>24</option>
+              <option value=25>25</option>
+              <option value=26>26</option>
+              <option value=27>27</option>
+              <option value=28>28</option>
+              <option value=29>29</option>
+              <option value=30>30</option>
+              <option value=31>31</option>
+		 </select>
+           	<span id="dayError1"></span>
+            
+        
+      
+        
+        </div>
+        <div id ="monthDiv" class="form-group">
+       
+      
+            <label class="sr-only" for="Month">Month</label>
+            <select class="form-control" name="month" id="Month" placeholder="Month">
+              <option value=-43>Month</option>
+              <option value=01>January</option>
+              <option value=02>February</option>
+              <option value=03>March</option>
+              <option value=04>April</option>
+              <option value=05>May</option>
+              <option value=06>June</option>
+              <option value=07>July</option>
+              <option value=08>August</option>
+              <option value=09>September</option>
+              <option value=10>October</option>
+              <option value=11>November</option>
+              <option value=12>December</option>
+        	</select>
+        	<span id="monthError1"></span>
+            
+        
+        </div>
+         <div id ="yearDiv" class="form-group">
+        
+            <label class="sr-only" for="Year">Year</label>
+            <select class="form-control" name="year" id="Year" placeholder="Year">
+              <option value=-43 selected="selected">Year</option>
+          	  <option id="d0"></option>
+              <option id="d1"></option>
+              
+            
+            </select>
+            <span id="yearError1"></span>
+            
+       </div>
+       
+
+    
+    <p>Date: <input type="text" id="selectedDatepicker" /></div></p>
+
+</body>
+
+<script>
+
+var d = new Date(); 
+			var d0 = (d.getFullYear() ); 
+			var d1 = (d.getFullYear() + 1 ); 
+			//var d2 = (d.getFullYear() + 2 ); 
+			
+			document.getElementById("d0").innerHTML = d0; 
+			document.getElementById("d1").innerHTML = d1; 
+
+
+
+$(function() {
+        $('#selectedDatepicker').datepicker({
+			dateFormat: "dd/mm/yy",
+    beforeShow: readSelected, onSelect: updateSelected,
+    minDate: new Date(d0, 1 - 1, 1), maxDate: new Date(d1, 12 - 1, 31),
+    showOn: 'both'});
+     
+// Prepare to show a date picker linked to three select controls
+function readSelected() {
+    $('#selectedDatepicker').val($('#Day').val() + '/' +
+        $('#Month').val() + '/' + $('#Year').val());
+    return {};
+}
+ 
+// Update three select controls to match a date picker selection
+function updateSelected() {
+    var date1 = $(this).val();
+    console.log(date1.substring(0, 2));
+    console.log(date1.substring(3, 5));
+    console.log(date1.substring(6, 10));
+    $('#Day').val(date1.substring(0, 2));
+	$('#Month').val(date1.substring(3, 5));
+    $('#Year').val(date1.substring(6, 10));
+}
+    
+    $('select').change(readSelected);
+    
+    });
+
+
+
+	
+</script>
